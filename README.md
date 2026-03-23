@@ -2,67 +2,115 @@ SQL Database Practice
 Проект содержит решения 13 задач по SQL для четырех различных баз данных.
 
 Структура репозитория:
-sql-database-practice/ 
-│ 
-├── README.md 
-│ 
-├── vehicles_db/ 
-│ ├── create_tables.sql 
-│ ├── insert_data.sql 
-│ ├── task1.sql 
-│ ├── task2.sql 
-│ ├── expected_task1.txt 
-│ └── expected_task2.txt 
-│ 
-├── racing_db/ 
-│ ├── create_tables.sql 
-│ ├── insert_data.sql 
-│ ├── task1.sql 
-│ ├── task2.sql 
-│ ├── task3.sql 
-│ ├── task4.sql 
-│ ├── task5.sql 
-│ ├── expected_task1.txt 
-│ ├── expected_task2.txt 
-│ ├── expected_task3.txt 
-│ ├── expected_task4.txt 
-│ └── expected_task5.txt 
-│ 
-├── hotels_db/ 
-│ ├── create_tables.sql 
-│ ├── insert_data.sql 
-│ ├── task1.sql 
-│ ├── task2.sql 
-│ ├── task3.sql 
-│ ├── expected_task1.txt 
-│ ├── expected_task2.txt 
-│ └── expected_task3.txt 
-│ 
-├── organization_db/ 
-│ ├── create_tables.sql 
-│ ├── insert_data.sql 
-│ ├── task1.sql 
-│ ├── task2.sql 
-│ ├── task3.sql 
-│ ├── expected_task1.txt 
-│ ├── expected_task2.txt 
-│ └── expected_task3.txt 
-│ 
-└── screenshots/ 
-├── XAMPP Control Panel.png 
-├── vehicles_task1.png 
-├── vehicles_task2.png 
-├── racing_task1.png 
-├── racing_task2.png 
-├── racing_task3.png 
-├── racing_task4.png 
-├── racing_task5.png 
-├── hotels_task1.png 
-├── hotels_task2.png 
-├── hotels_task3.png 
-├── organization_task1.png 
-├── organization_task2.png 
-└── organization_task3.png
+sql-database-practice/
+
+README.md
+
+vehicles_db/
+
+create_tables.sql
+
+insert_data.sql
+
+task1.sql
+
+task2.sql
+
+expected_task1.txt
+
+expected_task2.txt
+
+racing_db/
+
+create_tables.sql
+
+insert_data.sql
+
+task1.sql
+
+task2.sql
+
+task3.sql
+
+task4.sql
+
+task5.sql
+
+expected_task1.txt
+
+expected_task2.txt
+
+expected_task3.txt
+
+expected_task4.txt
+
+expected_task5.txt
+
+hotels_db/
+
+create_tables.sql
+
+insert_data.sql
+
+task1.sql
+
+task2.sql
+
+task3.sql
+
+expected_task1.txt
+
+expected_task2.txt
+
+expected_task3.txt
+
+organization_db/
+
+create_tables.sql
+
+insert_data.sql
+
+task1.sql
+
+task2.sql
+
+task3.sql
+
+expected_task1.txt
+
+expected_task2.txt
+
+expected_task3.txt
+
+screenshots/
+
+xampp_control_panel.png
+
+vehicles_task1.png
+
+vehicles_task2.png
+
+racing_task1.png
+
+racing_task2.png
+
+racing_task3.png
+
+racing_task4.png
+
+racing_task5.png
+
+hotels_task1.png
+
+hotels_task2.png
+
+hotels_task3.png
+
+organization_task1.png
+
+organization_task2.png
+
+organization_task3.png
 
 
 Базы данных и задачи
