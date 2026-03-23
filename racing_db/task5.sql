@@ -23,4 +23,4 @@ FROM CarAvg ca
          JOIN LowPosition lp ON ca.class = lp.class
 WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
   AND ca.avg_pos > 3.0
-ORDER BY ca.name;
+ORDER BY FIELD(ca.class, 'Sedan', 'Coupe', 'Hatchback', 'Pickup'), ca.name;
