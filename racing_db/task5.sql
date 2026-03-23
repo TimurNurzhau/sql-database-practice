@@ -7,7 +7,7 @@ WITH CarAvg AS (
      LowPosition AS (
          SELECT class, COUNT(*) AS low_count
          FROM CarAvg
-         WHERE avg_pos > 3.0
+         WHERE avg_pos >= 3.0
          GROUP BY class
      ),
      MaxLowCount AS (
