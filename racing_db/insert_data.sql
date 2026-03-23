@@ -1,6 +1,6 @@
 -- =============================================
--- База данных: Автомобильные гонки
--- Наполнение данными
+-- Р‘Р°Р·Р° РґР°РЅРЅС‹С…: РђРІС‚РѕРјРѕР±РёР»СЊРЅС‹Рµ РіРѕРЅРєРё
+-- РќР°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹РјРё
 -- =============================================
 
 INSERT INTO Classes (class, type, country, numDoors, engineSize, weight) VALUES
@@ -32,7 +32,7 @@ INSERT INTO Races (name, date) VALUES
                                    ('Daytona 500', '2023-02-19'),
                                    ('Spa 24 Hours', '2023-07-29'),
                                    ('Bathurst 1000', '2023-10-08'),
-                                   ('Nürburgring 24 Hours', '2023-06-17'),
+                                   ('NГјrburgring 24 Hours', '2023-06-17'),
                                    ('Pikes Peak International Hill Climb', '2023-06-25');
 
 INSERT INTO Results (car, race, position) VALUES
@@ -44,5 +44,5 @@ INSERT INTO Results (car, race, position) VALUES
                                               ('Chevrolet Camaro', 'Monaco Grand Prix', 4),
                                               ('Mercedes-Benz S-Class', 'Spa 24 Hours', 2),
                                               ('Ford F-150', 'Bathurst 1000', 6),
-                                              ('Audi A4', 'Nürburgring 24 Hours', 8),
+                                              ('Audi A4', 'NГјrburgring 24 Hours', 8),
                                               ('Nissan Rogue', 'Pikes Peak International Hill Climb', 3);

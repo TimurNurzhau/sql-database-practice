@@ -1,4 +1,4 @@
--- Задача 2: Объединить данные по автомобилям, мотоциклам и велосипедам с критериями
+-- Р—Р°РґР°С‡Р° 2: РћР±СЉРµРґРёРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РїРѕ Р°РІС‚РѕРјРѕР±РёР»СЏРј, РјРѕС‚РѕС†РёРєР»Р°Рј Рё РІРµР»РѕСЃРёРїРµРґР°Рј СЃ РєСЂРёС‚РµСЂРёСЏРјРё
 SELECT maker, model, horsepower, engine_capacity, 'Car' AS vehicle_type
 FROM Vehicle JOIN Car ON Vehicle.model = Car.model
 WHERE horsepower > 150 AND engine_capacity < 3 AND price < 35000

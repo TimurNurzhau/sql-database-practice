@@ -90,7 +90,7 @@ CREATE TABLE `races` (
 
 LOCK TABLES `races` WRITE;
 /*!40000 ALTER TABLE `races` DISABLE KEYS */;
-INSERT INTO `races` VALUES ('Bathurst 1000','2023-10-08'),('Daytona 500','2023-02-19'),('Indy 500','2023-05-28'),('Le Mans','2023-06-10'),('Monaco Grand Prix','2023-05-28'),('Nürburgring 24 Hours','2023-06-17'),('Pikes Peak International Hill Climb','2023-06-25'),('Spa 24 Hours','2023-07-29');
+INSERT INTO `races` VALUES ('Bathurst 1000','2023-10-08'),('Daytona 500','2023-02-19'),('Indy 500','2023-05-28'),('Le Mans','2023-06-10'),('Monaco Grand Prix','2023-05-28'),('NГјrburgring 24 Hours','2023-06-17'),('Pikes Peak International Hill Climb','2023-06-25'),('Spa 24 Hours','2023-07-29');
 /*!40000 ALTER TABLE `races` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `results` (
 
 LOCK TABLES `results` WRITE;
 /*!40000 ALTER TABLE `results` DISABLE KEYS */;
-INSERT INTO `results` VALUES ('Audi A4','Nürburgring 24 Hours',8),('BMW 3 Series','Le Mans',3),('Chevrolet Camaro','Monaco Grand Prix',4),('Ferrari 488','Le Mans',1),('Ford F-150','Bathurst 1000',6),('Ford Mustang','Indy 500',1),('Mercedes-Benz S-Class','Spa 24 Hours',2),('Nissan Rogue','Pikes Peak International Hill Climb',3),('Renault Clio','Daytona 500',5),('Toyota RAV4','Monaco Grand Prix',2);
+INSERT INTO `results` VALUES ('Audi A4','NГјrburgring 24 Hours',8),('BMW 3 Series','Le Mans',3),('Chevrolet Camaro','Monaco Grand Prix',4),('Ferrari 488','Le Mans',1),('Ford F-150','Bathurst 1000',6),('Ford Mustang','Indy 500',1),('Mercedes-Benz S-Class','Spa 24 Hours',2),('Nissan Rogue','Pikes Peak International Hill Climb',3),('Renault Clio','Daytona 500',5),('Toyota RAV4','Monaco Grand Prix',2);
 /*!40000 ALTER TABLE `results` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

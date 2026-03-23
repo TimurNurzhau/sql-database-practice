@@ -1,2 +1,1 @@
 Yamaha YZF-R1
-echo "" >> vehicles_db/expected_task1.txt

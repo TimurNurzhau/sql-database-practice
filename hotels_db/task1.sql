@@ -1,4 +1,4 @@
--- Задача 1: Клиенты с более чем двумя бронированиями в разных отелях
+-- Р—Р°РґР°С‡Р° 1: РљР»РёРµРЅС‚С‹ СЃ Р±РѕР»РµРµ С‡РµРј РґРІСѓРјСЏ Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏРјРё РІ СЂР°Р·РЅС‹С… РѕС‚РµР»СЏС…
 SELECT c.name, c.email, c.phone, COUNT(b.ID_booking) AS total_bookings,
        GROUP_CONCAT(DISTINCT h.name ORDER BY h.name SEPARATOR ', ') AS hotels,
        AVG(DATEDIFF(b.check_out_date, b.check_in_date)) AS avg_stay

@@ -1,4 +1,4 @@
--- Задача 2: Клиенты с более чем двумя бронированиями в разных отелях и потратившие более 500
+-- Р—Р°РґР°С‡Р° 2: РљР»РёРµРЅС‚С‹ СЃ Р±РѕР»РµРµ С‡РµРј РґРІСѓРјСЏ Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏРјРё РІ СЂР°Р·РЅС‹С… РѕС‚РµР»СЏС… Рё РїРѕС‚СЂР°С‚РёРІС€РёРµ Р±РѕР»РµРµ 500
 SELECT c.ID_customer, c.name, COUNT(b.ID_booking) AS total_bookings,
        SUM(r.price * DATEDIFF(b.check_out_date, b.check_in_date)) AS total_spent,
        COUNT(DISTINCT h.ID_hotel) AS unique_hotels
