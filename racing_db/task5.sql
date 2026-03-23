@@ -12,9 +12,6 @@ WITH CarAvg AS (
      ),
      MaxLowCount AS (
          SELECT MAX(low_count) AS max_low FROM LowPosition
-     ),
-     TargetClasses AS (
-         SELECT class FROM LowPosition WHERE low_count = (SELECT max_low FROM MaxLowCount)
      )
 SELECT ca.name AS car_name, ca.class AS car_class,
        FORMAT(ca.avg_pos, 4) AS average_position,
@@ -24,6 +21,6 @@ SELECT ca.name AS car_name, ca.class AS car_class,
 FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
          JOIN LowPosition lp ON ca.class = lp.class
-WHERE ca.class IN (SELECT class FROM TargetClasses)
+WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
   AND ca.avg_pos >= 3.0
 ORDER BY ca.name;
