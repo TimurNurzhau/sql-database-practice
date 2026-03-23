@@ -11,7 +11,9 @@ WITH CarAvg AS (
          HAVING car_count >= 2
      )
 SELECT ca.name AS car_name, ca.class AS car_class,
-       ROUND(ca.avg_pos, 1) AS average_position,
+       IF(ca.avg_pos = FLOOR(ca.avg_pos),
+          CONCAT(FLOOR(ca.avg_pos), '.0'),
+          FORMAT(ca.avg_pos, 4)) AS average_position,
        ca.race_count, cl.country AS car_country
 FROM CarAvg ca
          JOIN ClassAvg ca2 ON ca.class = ca2.class
