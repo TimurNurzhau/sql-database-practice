@@ -2,6 +2,7 @@ SQL Database Practice
 
 Проект содержит решения 13 задач по SQL для четырех различных баз данных.
 
+```mermaid
 graph TD
 A[sql-database-practice] --> B[vehicles_db]
 A --> C[racing_db]
@@ -22,8 +23,10 @@ A --> E[organization_db]
     
     E --> E1[create_tables.sql]
     E --> E2[insert_data.sql]
-    E --> E3[tasks.sql]                      # Решения задач 1-3
+    E --> E3[tasks.sql]                      
+ ```
 
+Решения задач находятся в файлах tasks.sql в каждой папке.
 
 Базы данных
 vehicles_db - Транспортные средства
@@ -39,7 +42,7 @@ organization_db - Структура организации
 Содержит отделы, сотрудников, проекты и задачи. Задачи на рекурсивные запросы для поиска по иерархии подчинения и подсчет подчиненных. Количество задач: 3.
 
 Как запустить
-Запустить XAMMP Control Panel
+Запустить XAMPP Control Panel
 
 Запустить службы Apache и MySQL
 
