@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 1: РљР»РёРµРЅС‚С‹ СЃ Р±РѕР»РµРµ С‡РµРј РґРІСѓРјСЏ Р±СЂРѕРЅРёСЂРѕРІР°РЅРёСЏРјРё РІ СЂР°Р·РЅС‹С… РѕС‚РµР»СЏС…
 SELECT c.name, c.email, c.phone, COUNT(b.ID_booking) AS total_bookings,
        GROUP_CONCAT(DISTINCT h.name ORDER BY h.name SEPARATOR ', ') AS hotels,
        AVG(DATEDIFF(b.check_out_date, b.check_in_date)) AS avg_stay
@@ -8,4 +7,4 @@ FROM Customer c
          JOIN Hotel h ON r.ID_hotel = h.ID_hotel
 GROUP BY c.ID_customer
 HAVING COUNT(DISTINCT h.ID_hotel) > 1 AND COUNT(b.ID_booking) > 2
-ORDER BY total_bookings DESC;
+ORDER BY total_bookings DESC, c.name;

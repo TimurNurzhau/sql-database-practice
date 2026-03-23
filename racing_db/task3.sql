@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 3: РљР»Р°СЃСЃС‹ СЃ РЅР°РёРјРµРЅСЊС€РµР№ СЃСЂРµРґРЅРµР№ РїРѕР·РёС†РёРµР№
 WITH ClassAvg AS (
     SELECT c.class, AVG(r.position) AS class_avg_pos
     FROM Cars c
@@ -21,4 +20,4 @@ FROM (
     SELECT COUNT(DISTINCT race) AS total FROM Results
 ) total_races
 WHERE ca2.class_avg_pos = (SELECT min_avg FROM MinClassAvg)
-ORDER BY ca.avg_pos;
+ORDER BY ca.avg_pos, ca.name;

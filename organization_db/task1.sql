@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 1: Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РїРѕРёСЃРє РІСЃРµС… РїРѕРґС‡РёРЅРµРЅРЅС‹С… РРІР°РЅР° РРІР°РЅРѕРІР° (EmployeeID=1)
 WITH RECURSIVE EmployeeHierarchy AS (
     SELECT EmployeeID, Name, ManagerID, DepartmentID, RoleID
     FROM Employees

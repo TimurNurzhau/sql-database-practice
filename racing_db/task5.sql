@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 5: РљР»Р°СЃСЃС‹ СЃ РЅР°РёР±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј Р°РІС‚РѕРјРѕР±РёР»РµР№ СЃ РЅРёР·РєРѕР№ РїРѕР·РёС†РёРµР№ (>3.0)
 WITH CarAvg AS (
     SELECT c.name, c.class, AVG(r.position) AS avg_pos, COUNT(r.race) AS race_count
     FROM Cars c
@@ -21,4 +20,4 @@ FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
          JOIN LowPosition lp ON ca.class = lp.class
 WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
-ORDER BY lp.low_count DESC;
+ORDER BY lp.low_count DESC, ca.class, ca.name;

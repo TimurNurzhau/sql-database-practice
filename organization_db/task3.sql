@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 3: РњРµРЅРµРґР¶РµСЂС‹ СЃ РїРѕРґС‡РёРЅРµРЅРЅС‹РјРё
 WITH RECURSIVE SubordinateHierarchy AS (
     SELECT EmployeeID, ManagerID
     FROM Employees
@@ -24,6 +23,6 @@ FROM Employees e
          LEFT JOIN Roles r ON e.RoleID = r.RoleID
          LEFT JOIN Projects p ON d.DepartmentID = p.DepartmentID
          LEFT JOIN Tasks t ON e.EmployeeID = t.AssignedTo
-WHERE r.RoleName = 'РњРµРЅРµРґР¶РµСЂ'
+WHERE r.RoleName = 'Менеджер'
 GROUP BY e.EmployeeID, e.Name, e.ManagerID, d.DepartmentName, r.RoleName, ms.TotalSubordinates
 ORDER BY e.Name;

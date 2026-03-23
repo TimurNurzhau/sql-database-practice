@@ -1,4 +1,3 @@
--- Р—Р°РґР°С‡Р° 1: РђРІС‚РѕРјРѕР±РёР»Рё СЃ РЅР°РёРјРµРЅСЊС€РµР№ СЃСЂРµРґРЅРµР№ РїРѕР·РёС†РёРµР№ РІ РєР°Р¶РґРѕРј РєР»Р°СЃСЃРµ
 WITH CarAvg AS (
     SELECT c.name, c.class, AVG(r.position) AS avg_pos, COUNT(r.race) AS race_count
     FROM Cars c
@@ -10,4 +9,4 @@ FROM CarAvg ca
 WHERE (ca.class, ca.avg_pos) IN (
     SELECT class, MIN(avg_pos) FROM CarAvg GROUP BY class
 )
-ORDER BY ca.avg_pos;
+ORDER BY ca.avg_pos, ca.name;
