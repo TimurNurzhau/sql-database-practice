@@ -7,11 +7,8 @@ WITH CarAvg AS (
      LowPosition AS (
          SELECT class, COUNT(*) AS low_count
          FROM CarAvg
-         WHERE ROUND(avg_pos, 1) >= 3.0
+         WHERE avg_pos >= 3.0
          GROUP BY class
-     ),
-     MaxLowCount AS (
-         SELECT MAX(low_count) AS max_low FROM LowPosition
      )
 SELECT ca.name AS car_name, ca.class AS car_class,
        FORMAT(ca.avg_pos, 4) AS average_position,
@@ -21,6 +18,5 @@ SELECT ca.name AS car_name, ca.class AS car_class,
 FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
          JOIN LowPosition lp ON ca.class = lp.class
-WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
-  AND ROUND(ca.avg_pos, 1) > 3.0
+WHERE ca.avg_pos > 3.0
 ORDER BY FIELD(ca.class, 'Sedan', 'Coupe', 'Hatchback', 'Pickup'), ca.name;
