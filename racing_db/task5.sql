@@ -19,7 +19,7 @@ WITH CarAvg AS (
 SELECT ca.name AS car_name, ca.class AS car_class,
        FORMAT(ca.avg_pos, 4) AS average_position,
        ca.race_count, cl.country AS car_country,
-       (SELECT COUNT(DISTINCT race) FROM Results WHERE car IN (SELECT name FROM Cars WHERE class IN (SELECT class FROM TargetClasses))) AS total_races,
+       (SELECT COUNT(DISTINCT race) FROM Results WHERE car IN (SELECT name FROM Cars WHERE class = ca.class)) AS total_races,
        lp.low_count AS low_position_count
 FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
