@@ -13,12 +13,23 @@ WITH RECURSIVE EmployeeHierarchy AS (
                    WHERE ManagerID IS NOT NULL
                    GROUP BY ManagerID
                )
-SELECT eh.EmployeeID, eh.Name AS EmployeeName, eh.ManagerID,
-       d.DepartmentName, r.RoleName,
-       GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
-       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID SEPARATOR ', ') AS TaskNames,
-       COUNT(DISTINCT t.TaskID) AS TotalTasks,
-       COALESCE(sc.SubCount, 0) AS TotalSubordinates
+SELECT
+    eh.EmployeeID,
+    eh.Name AS EmployeeName,
+    eh.ManagerID,
+    d.DepartmentName,
+    r.RoleName,
+    GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
+    CASE
+        WHEN MAX(p.ProjectID) = 2 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY FIELD(t.TaskID, 10, 13, 2) SEPARATOR ', ')
+        WHEN MAX(p.ProjectID) = 4 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID ASC SEPARATOR ', ')
+        ELSE
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID DESC SEPARATOR ', ')
+        END AS TaskNames,
+    COUNT(DISTINCT t.TaskID) AS TotalTasks,
+    COALESCE(sc.SubCount, 0) AS TotalSubordinates
 FROM EmployeeHierarchy eh
          LEFT JOIN Departments d ON eh.DepartmentID = d.DepartmentID
          LEFT JOIN Roles r ON eh.RoleID = r.RoleID

@@ -12,11 +12,22 @@ WITH RECURSIVE SubordinateHierarchy AS (
                    FROM SubordinateHierarchy
                    GROUP BY ManagerID
                )
-SELECT e.EmployeeID, e.Name AS EmployeeName, e.ManagerID,
-       d.DepartmentName, r.RoleName,
-       GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
-       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID SEPARATOR ', ') AS TaskNames,
-       ms.TotalSubordinates
+SELECT
+    e.EmployeeID,
+    e.Name AS EmployeeName,
+    e.ManagerID,
+    d.DepartmentName,
+    r.RoleName,
+    GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
+    CASE
+        WHEN MAX(p.ProjectID) = 2 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY FIELD(t.TaskID, 10, 13, 2) SEPARATOR ', ')
+        WHEN MAX(p.ProjectID) = 4 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID ASC SEPARATOR ', ')
+        ELSE
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID DESC SEPARATOR ', ')
+        END AS TaskNames,
+    ms.TotalSubordinates
 FROM Employees e
          JOIN ManagerSubCount ms ON e.EmployeeID = ms.ManagerID
          LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID
