@@ -1,13 +1,13 @@
--- Р—Р°РґР°С‡Р° 2: РћР±СЉРµРґРёРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РїРѕ Р°РІС‚РѕРјРѕР±РёР»СЏРј, РјРѕС‚РѕС†РёРєР»Р°Рј Рё РІРµР»РѕСЃРёРїРµРґР°Рј СЃ РєСЂРёС‚РµСЂРёСЏРјРё
-SELECT maker, model, horsepower, engine_capacity, 'Car' AS vehicle_type
-FROM Vehicle JOIN Car ON Vehicle.model = Car.model
-WHERE horsepower > 150 AND engine_capacity < 3 AND price < 35000
+-- Задача 2: Объединить данные по автомобилям, мотоциклам и велосипедам с критериями
+SELECT v.maker, c.model, c.horsepower, c.engine_capacity, 'Car' AS vehicle_type
+FROM Vehicle v JOIN Car c ON v.model = c.model
+WHERE c.horsepower > 150 AND c.engine_capacity < 3 AND c.price < 35000
 UNION
-SELECT maker, model, horsepower, engine_capacity, 'Motorcycle' AS vehicle_type
-FROM Vehicle JOIN Motorcycle ON Vehicle.model = Motorcycle.model
-WHERE horsepower > 150 AND engine_capacity < 1.5 AND price < 20000
+SELECT v.maker, m.model, m.horsepower, m.engine_capacity, 'Motorcycle' AS vehicle_type
+FROM Vehicle v JOIN Motorcycle m ON v.model = m.model
+WHERE m.horsepower > 150 AND m.engine_capacity < 1.5 AND m.price < 20000
 UNION
-SELECT maker, model, NULL AS horsepower, NULL AS engine_capacity, 'Bicycle' AS vehicle_type
-FROM Vehicle JOIN Bicycle ON Vehicle.model = Bicycle.model
-WHERE gear_count > 18 AND price < 4000
+SELECT v.maker, b.model, NULL AS horsepower, NULL AS engine_capacity, 'Bicycle' AS vehicle_type
+FROM Vehicle v JOIN Bicycle b ON v.model = b.model
+WHERE b.gear_count > 18 AND b.price < 4000
 ORDER BY horsepower DESC;
