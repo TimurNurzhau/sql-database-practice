@@ -33,84 +33,84 @@ jobs:
       - name: Test Vehicles DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE vehicles_db;"
-          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/create_tables.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/insert_data.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --default-character-set=utf8mb4 < vehicles_db/create_tables.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --default-character-set=utf8mb4 < vehicles_db/insert_data.sql
           
           echo "Testing Task 1..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --skip-column-names < vehicles_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > vehicles_db/output_task1.txt
-          diff -w vehicles_db/output_task1.txt vehicles_db/expected_task1.txt || (echo "FAIL: Task 1" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --default-character-set=utf8mb4 --skip-column-names < vehicles_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > vehicles_db/output_task1.txt
+          diff -w vehicles_db/output_task1.txt vehicles_db/expected_task1.txt || exit 1
           
           echo "Testing Task 2..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --skip-column-names < vehicles_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > vehicles_db/output_task2.txt
-          diff -w vehicles_db/output_task2.txt vehicles_db/expected_task2.txt || (echo "FAIL: Task 2" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db --default-character-set=utf8mb4 --skip-column-names < vehicles_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > vehicles_db/output_task2.txt
+          diff -w vehicles_db/output_task2.txt vehicles_db/expected_task2.txt || exit 1
           
           echo "All Vehicles DB tests passed!"
 
       - name: Test Racing DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE racing_db;"
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/create_tables.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/insert_data.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 < racing_db/create_tables.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 < racing_db/insert_data.sql
           
           echo "Testing Task 1..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --skip-column-names < racing_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task1.txt
-          diff -w racing_db/output_task1.txt racing_db/expected_task1.txt || (echo "FAIL: Racing Task 1" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 --skip-column-names < racing_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task1.txt
+          diff -w racing_db/output_task1.txt racing_db/expected_task1.txt || exit 1
           
           echo "Testing Task 2..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --skip-column-names < racing_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task2.txt
-          diff -w racing_db/output_task2.txt racing_db/expected_task2.txt || (echo "FAIL: Racing Task 2" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 --skip-column-names < racing_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task2.txt
+          diff -w racing_db/output_task2.txt racing_db/expected_task2.txt || exit 1
           
           echo "Testing Task 3..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --skip-column-names < racing_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task3.txt
-          diff -w racing_db/output_task3.txt racing_db/expected_task3.txt || (echo "FAIL: Racing Task 3" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 --skip-column-names < racing_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task3.txt
+          diff -w racing_db/output_task3.txt racing_db/expected_task3.txt || exit 1
           
           echo "Testing Task 4..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --skip-column-names < racing_db/task4.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task4.txt
-          diff -w racing_db/output_task4.txt racing_db/expected_task4.txt || (echo "FAIL: Racing Task 4" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 --skip-column-names < racing_db/task4.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task4.txt
+          diff -w racing_db/output_task4.txt racing_db/expected_task4.txt || exit 1
           
           echo "Testing Task 5..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --skip-column-names < racing_db/task5.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task5.txt
-          diff -w racing_db/output_task5.txt racing_db/expected_task5.txt || (echo "FAIL: Racing Task 5" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db --default-character-set=utf8mb4 --skip-column-names < racing_db/task5.sql | sed 's/\t/ /g' | tr -s ' ' > racing_db/output_task5.txt
+          diff -w racing_db/output_task5.txt racing_db/expected_task5.txt || exit 1
           
           echo "All Racing DB tests passed!"
 
       - name: Test Hotels DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE hotels_db;"
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/create_tables.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/insert_data.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --default-character-set=utf8mb4 < hotels_db/create_tables.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --default-character-set=utf8mb4 < hotels_db/insert_data.sql
           
           echo "Testing Task 1..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --skip-column-names < hotels_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task1.txt
-          diff -w hotels_db/output_task1.txt hotels_db/expected_task1.txt || (echo "FAIL: Hotels Task 1" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --default-character-set=utf8mb4 --skip-column-names < hotels_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task1.txt
+          diff -w hotels_db/output_task1.txt hotels_db/expected_task1.txt || exit 1
           
           echo "Testing Task 2..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --skip-column-names < hotels_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task2.txt
-          diff -w hotels_db/output_task2.txt hotels_db/expected_task2.txt || (echo "FAIL: Hotels Task 2" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --default-character-set=utf8mb4 --skip-column-names < hotels_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task2.txt
+          diff -w hotels_db/output_task2.txt hotels_db/expected_task2.txt || exit 1
           
           echo "Testing Task 3..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --skip-column-names < hotels_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task3.txt
-          diff -w hotels_db/output_task3.txt hotels_db/expected_task3.txt || (echo "FAIL: Hotels Task 3" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db --default-character-set=utf8mb4 --skip-column-names < hotels_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > hotels_db/output_task3.txt
+          diff -w hotels_db/output_task3.txt hotels_db/expected_task3.txt || exit 1
           
           echo "All Hotels DB tests passed!"
 
       - name: Test Organization DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE organization_db;"
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/create_tables.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/insert_data.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --default-character-set=utf8mb4 < organization_db/create_tables.sql
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --default-character-set=utf8mb4 < organization_db/insert_data.sql
           
           echo "Testing Task 1..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --skip-column-names < organization_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task1.txt
-          diff -w organization_db/output_task1.txt organization_db/expected_task1.txt || (echo "FAIL: Organization Task 1" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --default-character-set=utf8mb4 --skip-column-names < organization_db/task1.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task1.txt
+          diff -w organization_db/output_task1.txt organization_db/expected_task1.txt || exit 1
           
           echo "Testing Task 2..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --skip-column-names < organization_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task2.txt
-          diff -w organization_db/output_task2.txt organization_db/expected_task2.txt || (echo "FAIL: Organization Task 2" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --default-character-set=utf8mb4 --skip-column-names < organization_db/task2.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task2.txt
+          diff -w organization_db/output_task2.txt organization_db/expected_task2.txt || exit 1
           
           echo "Testing Task 3..."
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --skip-column-names < organization_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task3.txt
-          diff -w organization_db/output_task3.txt organization_db/expected_task3.txt || (echo "FAIL: Organization Task 3" && exit 1)
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db --default-character-set=utf8mb4 --skip-column-names < organization_db/task3.sql | sed 's/\t/ /g' | tr -s ' ' > organization_db/output_task3.txt
+          diff -w organization_db/output_task3.txt organization_db/expected_task3.txt || exit 1
           
           echo "All Organization DB tests passed!"
 
