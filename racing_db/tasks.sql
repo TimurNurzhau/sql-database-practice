@@ -164,7 +164,7 @@ WITH CarAvgPosition AS (
              average_position,
              race_count
          FROM CarAvgPosition
-         WHERE average_position > 3.0
+         WHERE average_position >= 3.0
      ),
      ClassLowCount AS (
          SELECT
