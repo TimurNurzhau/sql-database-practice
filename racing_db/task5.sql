@@ -26,4 +26,4 @@ FROM CarAvg ca
          JOIN LowPosition lp ON ca.class = lp.class
 WHERE ca.class IN (SELECT class FROM TargetClasses)
   AND ca.avg_pos >= 3.0
-ORDER BY lp.low_count DESC, ca.avg_pos, ca.name;
+ORDER BY ca.name;
