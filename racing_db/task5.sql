@@ -1,5 +1,5 @@
 WITH CarAvg AS (
-    SELECT c.name, c.class, ROUND(AVG(r.position), 1) AS avg_pos, COUNT(r.race) AS race_count
+    SELECT c.name, c.class, AVG(r.position) AS avg_pos, COUNT(r.race) AS race_count
     FROM Cars c
              JOIN Results r ON c.name = r.car
     GROUP BY c.name, c.class
@@ -7,7 +7,7 @@ WITH CarAvg AS (
      LowPosition AS (
          SELECT class, COUNT(*) AS low_count
          FROM CarAvg
-         WHERE avg_pos >= 3.0
+         WHERE ROUND(avg_pos, 1) >= 3.0
          GROUP BY class
      ),
      MaxLowCount AS (
@@ -22,5 +22,5 @@ FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
          JOIN LowPosition lp ON ca.class = lp.class
 WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
-  AND ca.avg_pos > 3.0
+  AND ROUND(ca.avg_pos, 1) > 3.0
 ORDER BY FIELD(ca.class, 'Sedan', 'Coupe', 'Hatchback', 'Pickup'), ca.name;
