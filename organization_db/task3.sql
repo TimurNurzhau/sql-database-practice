@@ -1,14 +1,42 @@
+-- =====================================================
+-- ЗАДАЧА 3: Менеджеры с подчиненными
+-- =====================================================
+-- Что нужно найти:
+--   Всех сотрудников с ролью 'Менеджер', у которых есть подчиненные
+--   Для каждого вывести общее количество подчиненных (включая подчиненных подчиненных)
+--
+-- Логика решения:
+--   1. Рекурсивный CTE (SubordinateHierarchy) для построения всех связей подчинения
+--      - Базовый уровень: все сотрудники, у которых есть руководитель (ManagerID IS NOT NULL)
+--      - Рекурсивный уровень: добавляем подчиненных подчиненных
+--   2. ManagerSubCount - подсчет уникальных подчиненных для каждого менеджера
+--   3. Основной запрос:
+--      - Фильтр по роли 'Менеджер'
+--      - Подтягиваем проекты и задачи через LEFT JOIN
+--      - GROUP_CONCAT для объединения проектов и задач
+--   4. Сортировка по имени сотрудника
+--
+-- Почему COUNT(DISTINCT EmployeeID)?
+--   В рекурсивном CTE могут быть дубликаты (один сотрудник может быть подчиненным
+--   через разные пути), нужен DISTINCT
+-- =====================================================
 WITH RECURSIVE SubordinateHierarchy AS (
+    -- Базовый уровень: все сотрудники, у которых есть руководитель
     SELECT EmployeeID, ManagerID
     FROM Employees
     WHERE ManagerID IS NOT NULL
+
     UNION ALL
+
+    -- Рекурсивный уровень: подчиненные подчиненных
     SELECT e.EmployeeID, sh.ManagerID
     FROM Employees e
              INNER JOIN SubordinateHierarchy sh ON e.ManagerID = sh.EmployeeID
 ),
                ManagerSubCount AS (
-                   SELECT ManagerID, COUNT(DISTINCT EmployeeID) AS TotalSubordinates
+                   SELECT
+                       ManagerID,
+                       COUNT(DISTINCT EmployeeID) AS TotalSubordinates
                    FROM SubordinateHierarchy
                    GROUP BY ManagerID
                )

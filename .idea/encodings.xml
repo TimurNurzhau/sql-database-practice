@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/.github/workflows/sql-tests.yml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-16" />
     <file url="file://$PROJECT_DIR$/hotels_db/expected_task3.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/organization_db/expected_task1.txt" charset="UTF-8" />
   </component>
 </project>

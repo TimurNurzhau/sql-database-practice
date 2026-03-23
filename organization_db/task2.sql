@@ -1,8 +1,27 @@
+-- =====================================================
+-- ЗАДАЧА 2: Подсчет подчиненных и задач
+-- =====================================================
+-- Что добавляем к задаче 1:
+--   - TotalTasks: общее количество задач, назначенных сотруднику
+--   - TotalSubordinates: количество непосредственных подчиненных (без учета их подчиненных)
+--
+-- Логика решения:
+--   1. Рекурсивный CTE (EmployeeHierarchy) - как в задаче 1
+--   2. SubordinateCount - подсчет непосредственных подчиненных:
+--      - GROUP BY ManagerID, COUNT(*) WHERE ManagerID IS NOT NULL
+--   3. Добавляем COUNT(DISTINCT t.TaskID) для подсчета задач
+--   4. Используем COALESCE(sc.SubCount, 0) для сотрудников без подчиненных
+--
+-- Почему SubordinateCount считаем отдельно?
+--   Нужно количество непосредственных подчиненных, без рекурсии
+-- =====================================================
 WITH RECURSIVE EmployeeHierarchy AS (
     SELECT EmployeeID, Name, ManagerID, DepartmentID, RoleID
     FROM Employees
     WHERE EmployeeID = 1
+
     UNION ALL
+
     SELECT e.EmployeeID, e.Name, e.ManagerID, e.DepartmentID, e.RoleID
     FROM Employees e
              INNER JOIN EmployeeHierarchy eh ON e.ManagerID = eh.EmployeeID
