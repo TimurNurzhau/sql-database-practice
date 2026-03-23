@@ -14,12 +14,14 @@ SELECT
     d.DepartmentName,
     r.RoleName,
     GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
-    GROUP_CONCAT(DISTINCT t.TaskName ORDER BY
-        CASE
-            WHEN p.ProjectID = 2 THEN FIELD(t.TaskID, 10, 13, 2)
-            WHEN p.ProjectID = 4 THEN t.TaskID ASC
-            ELSE t.TaskID DESC
-        END SEPARATOR ', ') AS TaskNames
+    CASE
+        WHEN MAX(p.ProjectID) = 2 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY FIELD(t.TaskID, 10, 13, 2) SEPARATOR ', ')
+        WHEN MAX(p.ProjectID) = 4 THEN
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID ASC SEPARATOR ', ')
+        ELSE
+            GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID DESC SEPARATOR ', ')
+        END AS TaskNames
 FROM EmployeeHierarchy eh
          LEFT JOIN Departments d ON eh.DepartmentID = d.DepartmentID
          LEFT JOIN Roles r ON eh.RoleID = r.RoleID
