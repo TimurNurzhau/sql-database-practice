@@ -35,39 +35,89 @@ jobs:
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE vehicles_db;"
           mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/create_tables.sql
           mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/insert_data.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/tasks.sql > vehicles_db/output.txt
-          echo "Vehicles DB tests completed"
+          
+          echo "Testing Task 1..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/task1.sql > vehicles_db/output_task1.txt
+          diff vehicles_db/output_task1.txt vehicles_db/expected_task1.txt || exit 1
+          
+          echo "Testing Task 2..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot vehicles_db < vehicles_db/task2.sql > vehicles_db/output_task2.txt
+          diff vehicles_db/output_task2.txt vehicles_db/expected_task2.txt || exit 1
+          
+          echo "All Vehicles DB tests passed!"
 
       - name: Test Racing DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE racing_db;"
           mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/create_tables.sql
           mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/insert_data.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/tasks.sql > racing_db/output.txt
-          echo "Racing DB tests completed"
+          
+          echo "Testing Task 1..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/task1.sql > racing_db/output_task1.txt
+          diff racing_db/output_task1.txt racing_db/expected_task1.txt || exit 1
+          
+          echo "Testing Task 2..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/task2.sql > racing_db/output_task2.txt
+          diff racing_db/output_task2.txt racing_db/expected_task2.txt || exit 1
+          
+          echo "Testing Task 3..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/task3.sql > racing_db/output_task3.txt
+          diff racing_db/output_task3.txt racing_db/expected_task3.txt || exit 1
+          
+          echo "Testing Task 4..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/task4.sql > racing_db/output_task4.txt
+          diff racing_db/output_task4.txt racing_db/expected_task4.txt || exit 1
+          
+          echo "Testing Task 5..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot racing_db < racing_db/task5.sql > racing_db/output_task5.txt
+          diff racing_db/output_task5.txt racing_db/expected_task5.txt || exit 1
+          
+          echo "All Racing DB tests passed!"
 
       - name: Test Hotels DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE hotels_db;"
           mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/create_tables.sql
           mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/insert_data.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/tasks.sql > hotels_db/output.txt
-          echo "Hotels DB tests completed"
+          
+          echo "Testing Task 1..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/task1.sql > hotels_db/output_task1.txt
+          diff hotels_db/output_task1.txt hotels_db/expected_task1.txt || exit 1
+          
+          echo "Testing Task 2..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/task2.sql > hotels_db/output_task2.txt
+          diff hotels_db/output_task2.txt hotels_db/expected_task2.txt || exit 1
+          
+          echo "Testing Task 3..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot hotels_db < hotels_db/task3.sql > hotels_db/output_task3.txt
+          diff hotels_db/output_task3.txt hotels_db/expected_task3.txt || exit 1
+          
+          echo "All Hotels DB tests passed!"
 
       - name: Test Organization DB
         run: |
           mysql -h127.0.0.1 -P3306 -uroot -proot -e "CREATE DATABASE organization_db;"
           mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/create_tables.sql
           mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/insert_data.sql
-          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/tasks.sql > organization_db/output.txt
-          echo "Organization DB tests completed"
+          
+          echo "Testing Task 1..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/task1.sql > organization_db/output_task1.txt
+          diff organization_db/output_task1.txt organization_db/expected_task1.txt || exit 1
+          
+          echo "Testing Task 2..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/task2.sql > organization_db/output_task2.txt
+          diff organization_db/output_task2.txt organization_db/expected_task2.txt || exit 1
+          
+          echo "Testing Task 3..."
+          mysql -h127.0.0.1 -P3306 -uroot -proot organization_db < organization_db/task3.sql > organization_db/output_task3.txt
+          diff organization_db/output_task3.txt organization_db/expected_task3.txt || exit 1
+          
+          echo "All Organization DB tests passed!"
 
       - name: Upload test results
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: sql-results
           path: |
-            vehicles_db/output.txt
-            racing_db/output.txt
-            hotels_db/output.txt
-            organization_db/output.txt
+            **/output_*.txt
