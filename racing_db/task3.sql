@@ -13,11 +13,7 @@ WITH CarAvg AS (
          SELECT MIN(class_avg_pos) AS min_avg FROM ClassAvg
      )
 SELECT ca.name AS car_name, ca.class AS car_class, ca.avg_pos AS average_position, ca.race_count, cl.country AS car_country,
-       (SELECT COUNT(DISTINCT race) FROM Results WHERE car IN (
-           SELECT name FROM CarAvg WHERE class IN (
-               SELECT class FROM ClassAvg WHERE class_avg_pos = (SELECT min_avg FROM MinClassAvg)
-           )
-       )) AS total_races
+       ca.race_count AS total_races
 FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
 WHERE ca.class IN (SELECT class FROM ClassAvg WHERE class_avg_pos = (SELECT min_avg FROM MinClassAvg))
