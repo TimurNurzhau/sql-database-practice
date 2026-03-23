@@ -6,47 +6,63 @@ sql-database-practice/
 │
 ├── README.md
 │
-├── vehicles_db
-│   ├── create_tables.sql
-│   ├── insert_data.sql
-│   ├── task1.sql
-│   ├── task2.sql
-│   ├── expected_task1.txt
-│   └── expected_task2.txt
+├── vehicles_db/
+│ ├── create_tables.sql
+│ ├── insert_data.sql
+│ ├── task1.sql
+│ ├── task2.sql
+│ ├── expected_task1.txt
+│ └── expected_task2.txt
 │
-├── racing_db
-│   ├── create_tables.sql
-│   ├── insert_data.sql
-│   ├── task1.sql
-│   ├── task2.sql
-│   ├── task3.sql
-│   ├── task4.sql
-│   ├── task5.sql
-│   ├── expected_task1.txt
-│   ├── expected_task2.txt
-│   ├── expected_task3.txt
-│   ├── expected_task4.txt
-│   └── expected_task5.txt
+├── racing_db/
+│ ├── create_tables.sql
+│ ├── insert_data.sql
+│ ├── task1.sql
+│ ├── task2.sql
+│ ├── task3.sql
+│ ├── task4.sql
+│ ├── task5.sql
+│ ├── expected_task1.txt
+│ ├── expected_task2.txt
+│ ├── expected_task3.txt
+│ ├── expected_task4.txt
+│ └── expected_task5.txt
 │
-├── hotels_db
-│   ├── create_tables.sql
-│   ├── insert_data.sql
-│   ├── task1.sql
-│   ├── task2.sql
-│   ├── task3.sql
-│   ├── expected_task1.txt
-│   ├── expected_task2.txt
-│   └── expected_task3.txt
+├── hotels_db/
+│ ├── create_tables.sql
+│ ├── insert_data.sql
+│ ├── task1.sql
+│ ├── task2.sql
+│ ├── task3.sql
+│ ├── expected_task1.txt
+│ ├── expected_task2.txt
+│ └── expected_task3.txt
 │
-└── organization_db
-├── create_tables.sql
-├── insert_data.sql
-├── task1.sql
-├── task2.sql
-├── task3.sql
-├── expected_task1.txt
-├── expected_task2.txt
-└── expected_task3.txt
+├── organization_db/
+│ ├── create_tables.sql
+│ ├── insert_data.sql
+│ ├── task1.sql
+│ ├── task2.sql
+│ ├── task3.sql
+│ ├── expected_task1.txt
+│ ├── expected_task2.txt
+│ └── expected_task3.txt
+│
+└── screenshots/
+├── XAMPP Control Panel.png
+├── vehicles_task1.png
+├── vehicles_task2.png
+├── racing_task1.png
+├── racing_task2.png
+├── racing_task3.png
+├── racing_task4.png
+├── racing_task5.png
+├── hotels_task1.png
+├── hotels_task2.png
+├── hotels_task3.png
+├── organization_task1.png
+├── organization_task2.png
+└── organization_task3.png
 
 Базы данных и задачи
 vehicles_db - Транспортные средства
@@ -106,3 +122,29 @@ organization_db - Структура организации
 
 Автоматическая проверка
 В репозитории настроен GitHub Actions, который при каждом пуше автоматически проверяет все SQL-запросы. Результаты проверки можно увидеть во вкладке Actions.
+
+Все скриншоты результатов выполнения запросов находятся в папке [`screenshots/`](screenshots/).
+
+### vehicles_db
+- [Задача 1](screenshots/vehicles_task1.png) — Yamaha YZF-R1
+- [Задача 2](screenshots/vehicles_task2.png) — 5 записей (Toyota Camry, Yamaha YZF-R1, Honda Civic, Trek Domane, Giant Defy)
+
+### racing_db
+- [Задача 1](screenshots/racing_task1.png) — 8 автомобилей с наименьшей средней позицией
+- [Задача 2](screenshots/racing_task2.png) — Ferrari 488 (Convertible, 1.0000, Italy)
+- [Задача 3](screenshots/racing_task3.png) — Ferrari 488 и Ford Mustang
+- [Задача 4](screenshots/racing_task4.png) — BMW 3 Series (3.0) и Toyota RAV4 (2.0000)
+- [Задача 5](screenshots/racing_task5.png) — Audi A4, Chevrolet Camaro, Renault Clio, Ford F-150
+
+### hotels_db
+- [Задача 1](screenshots/hotels_task1.png) — Bob Brown и Ethan Hunt (по 3 бронирования)
+- [Задача 2](screenshots/hotels_task2.png) — Bob Brown (820.00) и Ethan Hunt (850.00)
+- [Задача 3](screenshots/hotels_task3.png) — 10 клиентов с категориями отелей
+
+### organization_db
+- [Задача 1](screenshots/organization_task1.png) — 30 сотрудников с проектами и задачами
+- [Задача 2](screenshots/organization_task2.png) — + количество задач и подчиненных
+- [Задача 3](screenshots/organization_task3.png) — Алексей Алексеев (4 подчиненных)
+
+### XAMPP Control Panel
+- [Скриншот](screenshots/XAMPP%20Control%20Panel.png) — запущенные службы Apache и MySQL
