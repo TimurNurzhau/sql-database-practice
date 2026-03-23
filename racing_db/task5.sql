@@ -7,7 +7,7 @@ WITH CarAvg AS (
      LowPosition AS (
          SELECT class, COUNT(*) AS low_count
          FROM CarAvg
-         WHERE avg_pos >= 3.0
+         WHERE avg_pos > 3.0
          GROUP BY class
      ),
      MaxLowCount AS (
@@ -22,5 +22,5 @@ FROM CarAvg ca
          JOIN Classes cl ON ca.class = cl.class
          JOIN LowPosition lp ON ca.class = lp.class
 WHERE lp.low_count = (SELECT max_low FROM MaxLowCount)
-  AND ca.avg_pos >= 3.0
+  AND ca.avg_pos > 3.0
 ORDER BY ca.name;
