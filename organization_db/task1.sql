@@ -10,7 +10,7 @@ WITH RECURSIVE EmployeeHierarchy AS (
 SELECT eh.EmployeeID, eh.Name AS EmployeeName, eh.ManagerID,
        d.DepartmentName, r.RoleName,
        GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
-       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskName SEPARATOR ', ') AS TaskNames
+       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID SEPARATOR ', ') AS TaskNames
 FROM EmployeeHierarchy eh
          LEFT JOIN Departments d ON eh.DepartmentID = d.DepartmentID
          LEFT JOIN Roles r ON eh.RoleID = r.RoleID

@@ -15,7 +15,7 @@ WITH RECURSIVE SubordinateHierarchy AS (
 SELECT e.EmployeeID, e.Name AS EmployeeName, e.ManagerID,
        d.DepartmentName, r.RoleName,
        GROUP_CONCAT(DISTINCT p.ProjectName ORDER BY p.ProjectName SEPARATOR ', ') AS ProjectNames,
-       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskName SEPARATOR ', ') AS TaskNames,
+       GROUP_CONCAT(DISTINCT t.TaskName ORDER BY t.TaskID SEPARATOR ', ') AS TaskNames,
        ms.TotalSubordinates
 FROM Employees e
          JOIN ManagerSubCount ms ON e.EmployeeID = ms.ManagerID
