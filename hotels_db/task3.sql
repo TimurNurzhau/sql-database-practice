@@ -24,10 +24,10 @@ WITH HotelCategory AS (
                     WHEN SUM(CASE WHEN category = 'Средний' THEN 1 ELSE 0 END) > 0 THEN 'Средний'
                     ELSE 'Дешевый'
                     END AS preferred_type,
-                GROUP_CONCAT(DISTINCT hotel_name ORDER BY hotel_name SEPARATOR ', ') AS visited_hotels
+                GROUP_CONCAT(DISTINCT hotel_name ORDER BY hotel_name SEPARATOR ',') AS visited_hotels
          FROM CustomerHotels
          GROUP BY ID_customer, name
      )
 SELECT ID_customer, name, preferred_type, visited_hotels
 FROM CustomerPreference
-ORDER BY FIELD(preferred_type, 'Дешевый', 'Средний', 'Дорогой'), name;
+ORDER BY FIELD(preferred_type, 'Дешевый', 'Средний', 'Дорогой'), ID_customer;
